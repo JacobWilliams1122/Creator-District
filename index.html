@@ -1,694 +1,600 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>LEANIN SOCIETY</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #000000;
-        }
-
-        /* NAVIGATION */
-        nav {
-            width: 100%;
-            height: 78px;
-            background: #000000;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.55;
-        }
-
-        .bag {
-            border: 1px solid white;
-            padding: 10px 15px;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 650px;
-            background: #050505;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .small-title {
-            font-size: 12px;
-            letter-spacing: 6px;
-            margin-bottom: 25px;
-            opacity: 0.7;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 10vw, 130px);
-            line-height: 0.85;
-            font-weight: 900;
-            letter-spacing: -6px;
-        }
-
-        .hero p {
-            margin: 35px auto;
-            max-width: 500px;
-            color: #cfcfcf;
-            line-height: 1.7;
-        }
-
-        .button {
-            display: inline-block;
-            background: white;
-            color: black;
-            padding: 16px 35px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background: #cccccc;
-            transform: translateY(-2px);
-        }
-
-        /* CATEGORY SECTION */
-        .section {
-            padding: 100px 6%;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            margin-bottom: 45px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-        }
-
-        .section-title h2 {
-            font-size: 40px;
-            letter-spacing: -2px;
-        }
-
-        .section-title span {
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: #777;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .category {
-            height: 300px;
-            background: #eeeeee;
-            display: flex;
-            align-items: end;
-            padding: 28px;
-            text-decoration: none;
-            color: black;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .category:hover {
-            background: #000000;
-            color: white;
-        }
-
-        .category h3 {
-            font-size: 27px;
-            letter-spacing: -1px;
-        }
-
-        .category small {
-            display: block;
-            margin-top: 7px;
-            font-size: 10px;
-            letter-spacing: 2px;
-            opacity: 0.6;
-        }
-
-        /* PRODUCTS */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .product {
-            background: #f4f4f4;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-image {
-            height: 330px;
-            background: #e5e5e5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: #777;
-        }
-
-        .product-info {
-            padding: 20px;
-            background: white;
-        }
-
-        .product-info h3 {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .product-info p {
-            font-size: 13px;
-            color: #555;
-        }
-
-        /* FEATURE */
-        .feature {
-            background: #000;
-            color: white;
-            padding: 100px 8%;
-            text-align: center;
-        }
-
-        .feature h2 {
-            font-size: clamp(40px, 7vw, 85px);
-            letter-spacing: -4px;
-            line-height: 0.95;
-        }
-
-        .feature p {
-            max-width: 500px;
-            margin: 30px auto;
-            color: #aaa;
-            line-height: 1.7;
-        }
-
-        /* SIZE GUIDE */
-        #size-guide {
-            background: #f5f5f5;
-        }
-
-        .size-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            background: white;
-        }
-
-        .size-table th,
-        .size-table td {
-            padding: 20px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            font-size: 13px;
-        }
-
-        .size-table th {
-            background: black;
-            color: white;
-            letter-spacing: 2px;
-            font-size: 11px;
-        }
-
-        /* NEWSLETTER */
-        .newsletter {
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: 45px;
-            letter-spacing: -2px;
-        }
-
-        .newsletter p {
-            color: #666;
-            margin: 15px 0 30px;
-        }
-
-        .email-box {
-            display: flex;
-            max-width: 500px;
-            margin: auto;
-        }
-
-        .email-box input {
-            flex: 1;
-            padding: 16px;
-            border: 1px solid #ccc;
-            outline: none;
-        }
-
-        .email-box button {
-            padding: 16px 25px;
-            background: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: black;
-            color: white;
-            padding: 60px 6% 30px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 50px;
-            padding-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 3px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 60px;
-        }
-
-        .footer-links h4 {
-            font-size: 11px;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-        }
-
-        .footer-links a {
-            display: block;
-            color: #aaa;
-            text-decoration: none;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 25px;
-            color: #666;
-            font-size: 10px;
-            letter-spacing: 1px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .categories {
-                grid-template-columns: 1fr;
-            }
-
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .product-image {
-                height: 240px;
-            }
-
-            .footer-top {
-                flex-direction: column;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                letter-spacing: -3px;
-            }
-
-            .email-box {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Social Society</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #fff;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid #222;
+    background: #050505;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+nav span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.hero small {
+    color: #888;
+    letter-spacing: 5px;
+    font-size: 10px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 10vw, 110px);
+    line-height: .85;
+    letter-spacing: -6px;
+    margin: 25px 0;
+}
+
+.hero p {
+    color: #999;
+    max-width: 500px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* BUILDER */
+
+.builder {
+    background: #fff;
+    color: #000;
+    padding: 80px 7%;
+}
+
+.builder-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.builder-title h2 {
+    font-size: 42px;
+    letter-spacing: -2px;
+}
+
+.builder-title p {
+    color: #777;
+    margin-top: 10px;
+}
+
+.form {
+    max-width: 750px;
+    margin: auto;
+}
+
+.field {
+    margin-bottom: 22px;
+}
+
+.field label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.field input,
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    outline: none;
+    font-size: 14px;
+}
+
+.field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+    border-color: #000;
+}
+
+.generate {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.generate:hover {
+    background: #222;
+}
+
+/* PREVIEW */
+
+.preview-section {
+    padding: 100px 7%;
+    background: #080808;
+}
+
+.preview-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.preview-title h2 {
+    font-size: 40px;
+}
+
+.preview {
+    max-width: 500px;
+    margin: auto;
+    background: #111;
+    border: 1px solid #292929;
+    padding: 45px 30px;
+    text-align: center;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.preview h3 {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.category {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+.bio {
+    color: #aaa;
+    margin: 20px auto;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.socials a {
+    display: block;
+    padding: 15px;
+    border: 1px solid #444;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: .2s;
+}
+
+.socials a:hover {
+    background: white;
+    color: black;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 50px 7%;
+    border-top: 1px solid #222;
+    text-align: center;
+    color: #555;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    .builder,
+    .preview-section {
+        padding: 60px 5%;
+    }
+
+    .builder-title h2,
+    .preview-title h2 {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="logo">LEANIN SOCIETY</div>
+<nav>
+    <div class="logo">SOCIAL SOCIETY</div>
+    <span>CREATE YOUR PROFILE</span>
+</nav>
 
-        <ul class="nav-links">
-            <li><a href="#shop">SHOP</a></li>
-            <li><a href="#categories">CATEGORIES</a></li>
-            <li><a href="#size-guide">SIZE GUIDE</a></li>
-            <li><a href="#about">ABOUT</a></li>
-        </ul>
+<section class="hero">
 
-        <div class="bag">BAG (0)</div>
-    </nav>
+    <div>
+        <small>YOUR SOCIALS. YOUR BRAND.</small>
 
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-
-            <div class="small-title">LEANIN SOCIETY — EST. 2026</div>
-
-            <h1>LEANIN<br>SOCIETY</h1>
-
-            <p>
-                A collection built around confidence, individuality,
-                and standing out without saying a word.
-            </p>
-
-            <a href="#shop" class="button">SHOP COLLECTION</a>
-
-        </div>
-    </section>
-
-
-    <!-- CATEGORIES -->
-    <section class="section" id="categories">
-
-        <div class="section-title">
-            <h2>SHOP BY CATEGORY</h2>
-            <span>COLLECTION 01</span>
-        </div>
-
-        <div class="categories">
-
-            <a href="#hoodies" class="category">
-                <div>
-                    <h3>HOODIES</h3>
-                    <small>VIEW COLLECTION →</small>
-                </div>
-            </a>
-
-            <a href="#shirts" class="category">
-                <div>
-                    <h3>SHIRTS</h3>
-                    <small>VIEW COLLECTION →</small>
-                </div>
-            </a>
-
-            <a href="#cups" class="category">
-                <div>
-                    <h3>CUPS</h3>
-                    <small>VIEW COLLECTION →</small>
-                </div>
-            </a>
-
-            <a href="#decals" class="category">
-                <div>
-                    <h3>DECALS / STICKERS</h3>
-                    <small>VIEW COLLECTION →</small>
-                </div>
-            </a>
-
-            <a href="#accessories" class="category">
-                <div>
-                    <h3>ACCESSORIES</h3>
-                    <small>VIEW COLLECTION →</small>
-                </div>
-            </a>
-
-            <a href="#new" class="category">
-                <div>
-                    <h3>NEW ARRIVALS</h3>
-                    <small>VIEW COLLECTION →</small>
-                </div>
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTS -->
-    <section class="section" id="shop">
-
-        <div class="section-title">
-            <h2>FEATURED</h2>
-            <span>LEANIN SOCIETY</span>
-        </div>
-
-        <div class="products">
-
-            <div class="product" id="hoodies">
-                <div class="product-image">
-                    HOODIE IMAGE
-                </div>
-                <div class="product-info">
-                    <h3>LEANIN SOCIETY HOODIE</h3>
-                    <p>$65.00</p>
-                </div>
-            </div>
-
-            <div class="product" id="shirts">
-                <div class="product-image">
-                    SHIRT IMAGE
-                </div>
-                <div class="product-info">
-                    <h3>LEANIN SOCIETY TEE</h3>
-                    <p>$35.00</p>
-                </div>
-            </div>
-
-            <div class="product" id="cups">
-                <div class="product-image">
-                    CUP IMAGE
-                </div>
-                <div class="product-info">
-                    <h3>LEANIN SOCIETY CUP</h3>
-                    <p>$20.00</p>
-                </div>
-            </div>
-
-            <div class="product" id="decals">
-                <div class="product-image">
-                    STICKER IMAGE
-                </div>
-                <div class="product-info">
-                    <h3>LOGO DECAL PACK</h3>
-                    <p>$12.00</p>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURE -->
-    <section class="feature" id="about">
-
-        <div class="small-title">THE SOCIETY</div>
-
-        <h2>MADE TO<br>STAND OUT.</h2>
+        <h1>GET<br>DISCOVERED.</h1>
 
         <p>
-            LEANIN SOCIETY is more than a collection.
-            It's a statement. Clean designs, bold details,
-            and pieces made to become part of your everyday look.
+            Create a clean personal page for your social media accounts
+            and share everything from one simple link.
+        </p>
+    </div>
+
+</section>
+
+<section class="builder">
+
+    <div class="builder-title">
+        <h2>BUILD YOUR PAGE</h2>
+        <p>Enter your information below.</p>
+    </div>
+
+    <div class="form">
+
+        <div class="field">
+            <label>DISPLAY NAME</label>
+            <input id="name" type="text" placeholder="Your name">
+        </div>
+
+        <div class="field">
+            <label>TIKTOK USERNAME</label>
+            <input id="tiktok" type="text" placeholder="@username">
+        </div>
+
+        <div class="field">
+            <label>INSTAGRAM USERNAME</label>
+            <input id="instagram" type="text" placeholder="@username">
+        </div>
+
+        <div class="field">
+            <label>YOUTUBE CHANNEL</label>
+            <input id="youtube" type="text" placeholder="Channel name or link">
+        </div>
+
+        <div class="field">
+            <label>DISCORD INVITE</label>
+            <input id="discord" type="text" placeholder="discord.gg/example">
+        </div>
+
+        <div class="field">
+            <label>CATEGORY</label>
+
+            <select id="category">
+                <option>Content Creator</option>
+                <option>Gaming</option>
+                <option>Fashion</option>
+                <option>Music</option>
+                <option>Business</option>
+                <option>Roblox</option>
+                <option>Other</option>
+            </select>
+
+        </div>
+
+        <div class="field">
+            <label>BIO</label>
+
+            <textarea id="bio"
+                placeholder="Tell people about yourself..."></textarea>
+
+        </div>
+
+        <button class="generate" onclick="generateProfile()">
+            GENERATE MY PAGE
+        </button>
+
+    </div>
+
+</section>
+
+<section class="preview-section">
+
+    <div class="preview-title">
+        <h2>YOUR PROFILE</h2>
+    </div>
+
+    <div class="preview">
+
+        <div class="avatar" id="avatar">
+            SS
+        </div>
+
+        <h3 id="previewName">
+            Your Name
+        </h3>
+
+        <div class="category" id="previewCategory">
+            CONTENT CREATOR
+        </div>
+
+        <p class="bio" id="previewBio">
+            Your bio will appear here.
         </p>
 
-        <a href="#shop" class="button">EXPLORE</a>
+        <div class="socials" id="socials">
 
-    </section>
+            <a id="previewTikTok"
+               href="#"
+               target="_blank">
+                TIKTOK
+            </a>
 
+            <a id="previewInstagram"
+               href="#"
+               target="_blank">
+                INSTAGRAM
+            </a>
 
-    <!-- SIZE GUIDE -->
-    <section class="section" id="size-guide">
+            <a id="previewYoutube"
+               href="#"
+               target="_blank">
+                YOUTUBE
+            </a>
 
-        <div class="section-title">
-            <h2>SIZE GUIDE</h2>
-            <span>FIND YOUR FIT</span>
-        </div>
-
-        <table class="size-table">
-
-            <tr>
-                <th>SIZE</th>
-                <th>CHEST</th>
-                <th>LENGTH</th>
-                <th>US SIZE</th>
-            </tr>
-
-            <tr>
-                <td>XS</td>
-                <td>32–34"</td>
-                <td>26"</td>
-                <td>0–2</td>
-            </tr>
-
-            <tr>
-                <td>S</td>
-                <td>35–37"</td>
-                <td>27"</td>
-                <td>4–6</td>
-            </tr>
-
-            <tr>
-                <td>M</td>
-                <td>38–40"</td>
-                <td>28"</td>
-                <td>8–10</td>
-            </tr>
-
-            <tr>
-                <td>L</td>
-                <td>41–43"</td>
-                <td>29"</td>
-                <td>12–14</td>
-            </tr>
-
-            <tr>
-                <td>XL</td>
-                <td>44–46"</td>
-                <td>30"</td>
-                <td>16–18</td>
-            </tr>
-
-        </table>
-
-    </section>
-
-
-    <!-- NEWSLETTER -->
-    <section class="newsletter">
-
-        <h2>JOIN THE SOCIETY.</h2>
-
-        <p>Get new collection announcements and updates.</p>
-
-        <div class="email-box">
-            <input type="email" placeholder="ENTER YOUR EMAIL">
-            <button>JOIN</button>
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="footer-top">
-
-            <div class="footer-logo">
-                LEANIN<br>SOCIETY
-            </div>
-
-            <div class="footer-links">
-
-                <div>
-                    <h4>SHOP</h4>
-                    <a href="#hoodies">Hoodies</a>
-                    <a href="#shirts">Shirts</a>
-                    <a href="#cups">Cups</a>
-                    <a href="#decals">Decals / Stickers</a>
-                </div>
-
-                <div>
-                    <h4>INFO</h4>
-                    <a href="#size-guide">Size Guide</a>
-                    <a href="#about">About</a>
-                    <a href="#">Contact</a>
-                </div>
-
-                <div>
-                    <h4>SOCIAL</h4>
-                    <a href="#">Instagram</a>
-                    <a href="#">TikTok</a>
-                </div>
-
-            </div>
+            <a id="previewDiscord"
+               href="#"
+               target="_blank">
+                DISCORD
+            </a>
 
         </div>
 
-        <div class="footer-bottom">
-            © 2026 LEANIN SOCIETY. ALL RIGHTS RESERVED.
-        </div>
+    </div>
 
-    </footer>
+</section>
+
+<footer>
+    © 2026 SOCIAL SOCIETY — ALL RIGHTS RESERVED.
+</footer>
+
+<script>
+
+function cleanUsername(value) {
+
+    value = value.trim();
+
+    if (value.startsWith("@")) {
+        value = value.substring(1);
+    }
+
+    return value;
+}
+
+function generateProfile() {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const tiktok =
+        cleanUsername(
+            document.getElementById("tiktok").value
+        );
+
+    const instagram =
+        cleanUsername(
+            document.getElementById("instagram").value
+        );
+
+    const youtube =
+        document.getElementById("youtube").value.trim();
+
+    const discord =
+        document.getElementById("discord").value.trim();
+
+    const category =
+        document.getElementById("category").value;
+
+    const bio =
+        document.getElementById("bio").value.trim();
+
+
+    /* NAME */
+
+    document.getElementById("previewName").textContent =
+        name || "Your Name";
+
+
+    /* CATEGORY */
+
+    document.getElementById("previewCategory").textContent =
+        category.toUpperCase();
+
+
+    /* BIO */
+
+    document.getElementById("previewBio").textContent =
+        bio || "Your bio will appear here.";
+
+
+    /* AVATAR INITIALS */
+
+    if (name) {
+
+        const words = name.split(" ");
+
+        let initials = words[0][0];
+
+        if (words.length > 1) {
+            initials += words[1][0];
+        }
+
+        document.getElementById("avatar").textContent =
+            initials.toUpperCase();
+
+    } else {
+
+        document.getElementById("avatar").textContent = "SS";
+
+    }
+
+
+    /* TIKTOK */
+
+    const tikTokButton =
+        document.getElementById("previewTikTok");
+
+    if (tiktok) {
+
+        tikTokButton.style.display = "block";
+
+        tikTokButton.href =
+            "https://www.tiktok.com/@" + tiktok;
+
+    } else {
+
+        tikTokButton.style.display = "none";
+
+    }
+
+
+    /* INSTAGRAM */
+
+    const instagramButton =
+        document.getElementById("previewInstagram");
+
+    if (instagram) {
+
+        instagramButton.style.display = "block";
+
+        instagramButton.href =
+            "https://www.instagram.com/" + instagram;
+
+    } else {
+
+        instagramButton.style.display = "none";
+
+    }
+
+
+    /* YOUTUBE */
+
+    const youtubeButton =
+        document.getElementById("previewYoutube");
+
+    if (youtube) {
+
+        youtubeButton.style.display = "block";
+
+        if (youtube.startsWith("http")) {
+            youtubeButton.href = youtube;
+        } else {
+            youtubeButton.href =
+                "https://www.youtube.com/results?search_query=" +
+                encodeURIComponent(youtube);
+        }
+
+    } else {
+
+        youtubeButton.style.display = "none";
+
+    }
+
+
+    /* DISCORD */
+
+    const discordButton =
+        document.getElementById("previewDiscord");
+
+    if (discord) {
+
+        discordButton.style.display = "block";
+
+        if (discord.startsWith("http")) {
+            discordButton.href = discord;
+        } else {
+            discordButton.href =
+                "https://" + discord;
+        }
+
+    } else {
+
+        discordButton.style.display = "none";
+
+    }
+
+
+    /* SCROLL TO PROFILE */
+
+    document.querySelector(".preview-section")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+</script>
 
 </body>
 </html>
+```
